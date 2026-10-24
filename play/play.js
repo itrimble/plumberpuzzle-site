@@ -74,7 +74,7 @@
       else toast('Water released');
     }
     S.released = true; S.water = 0; S.flowT = 0; S.wetCount = 1;
-    if (!S.auto) { sound.play('surge', 0.55); sound.flowing(true); }
+    if (!S.auto) { sound.play('surge', 0.9); sound.flowing(true); }
     var src = S.board.positions(R.KIND.SOURCE)[0], c = draw.centre(src);
     draw.burst(c.x, c.y, 14, '#bfefff', 120, true);
     hud();
@@ -86,7 +86,7 @@
     S.grace = S.lv.grace * (1 - S.lv.leakGraceFraction); S.escalation *= 1.14; S.warned = false;
     if (dead) draw.jet(dead.i, dead.dir);
     if (S.auto) return;
-    sound.flowing(false); sound.play('leak', 0.8);
+    sound.flowing(false); sound.play('leak', 1.3);
     if (S.leaks >= R.maxLeaks(S.lv.id)) return fail();
     toast('Leak! Reroute before the next surge');
     say('Leak. ' + (R.maxLeaks(S.lv.id) - S.leaks) + ' left.');
@@ -156,7 +156,7 @@
 
   function clear() {
     var stars = R.stars(S.lv.par, S.moves, S.leaks), pts = R.score(S.lv.par, S.moves, S.surge, S.leaks);
-    total += pts; state = 'cleared'; sound.flowing(false); sound.play('level_clear', 0.8);
+    total += pts; state = 'cleared'; sound.flowing(false); sound.play('level_clear', 1.1);
     var c = draw.centre(S.board.positions(R.KIND.DRAIN)[0]);
     draw.burst(c.x, c.y, 40, '#ffd66b', 180);
     track('mini_stage_clear', { stage: stage + 1, moves: S.moves, leaks: S.leaks, score: total });
