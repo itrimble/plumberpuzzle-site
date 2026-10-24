@@ -1,0 +1,59 @@
+/* Playable demo (#mini). Colours come from the page's :root tokens. */
+.play{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:44px;align-items:start}
+.play h2{margin:14px 0 10px}
+.steps{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:14px;counter-reset:step}
+.steps li{position:relative;padding:14px 16px 14px 56px;background:var(--card);border:1px solid var(--line);border-radius:16px;counter-increment:step}
+.steps li::before{content:counter(step);position:absolute;left:16px;top:14px;width:28px;height:28px;border-radius:9px;background:rgba(61,184,232,.16);color:var(--accent2);display:grid;place-items:center;font-weight:800;font-size:14px}
+.steps h3{margin:0 0 4px;font-size:16px}.steps p{margin:0;color:var(--muted);font-size:15px}
+.play-note{color:var(--muted);font-size:13px;margin-top:16px}
+
+.mini{position:relative}
+.mini-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;min-height:44px}
+.mini-stagename{font-weight:800;font-size:14px;color:var(--accent2);margin:0}
+.mini-tools{display:flex;gap:8px}
+.mini-tool{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0}
+.mini-tool svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mini-tool[aria-pressed="true"] .off,.mini-tool[aria-pressed="false"] .on{display:none}
+.mini-hud{display:grid;grid-template-columns:repeat(3,auto) 1fr;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 14px;margin-bottom:10px;font-size:13px}
+.mini-hud .cap{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.mini-hud b{font-size:16px;font-variant-numeric:tabular-nums}
+.mini-pips{display:flex;gap:5px;height:22px;align-items:center}
+.mini-pips i{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(61,184,232,.6)}
+.mini-pips i.used{background:#ff7a45;box-shadow:none;opacity:.5}
+.mini-water{justify-self:stretch;min-width:0}
+.mini-gaugebar{height:8px;border-radius:99px;background:rgba(125,180,210,.16);overflow:hidden;margin-top:6px}
+.mini-gaugebar span{display:block;height:100%;background:linear-gradient(90deg,#3db8e8,#7ad7ff);transform-origin:left;transition:transform .12s linear}
+.mini.urgent .mini-gaugebar span{background:linear-gradient(90deg,#ff7a45,#ffb36b)}
+.mini-stage{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#06192a}
+.mini-stage canvas{display:block;width:100%;aspect-ratio:1/1;touch-action:manipulation;outline:none;cursor:pointer}
+.mini-stage canvas:focus-visible{box-shadow:inset 0 0 0 3px #ffd66b}
+.mini-under{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:10px}
+.mini-hint{margin:0;color:var(--muted);font-size:14px;min-height:42px}
+.mini-release{flex:none;border:0;cursor:pointer;font:inherit;padding:11px 16px;border-radius:12px;font-weight:800;background:linear-gradient(135deg,#ffb84d,#ff8a2b);color:#2a1400}
+.mini-release:disabled{opacity:.4;cursor:default}
+.mini:not(.playing) .mini-hud,.mini:not(.playing) .mini-under,.mini:not(.playing) [data-act="pause"]{visibility:hidden}
+
+.mini-start,.mini-card{position:absolute;inset:auto 14px 14px 14px;padding:18px;border-radius:18px;background:rgba(5,18,31,.86);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center}
+/* The card covers the whole widget (HUD, board and buttons), so it has room on a phone. */
+.mini-card{inset:0;z-index:5;display:flex;flex-direction:column;justify-content:center;background:rgba(5,18,31,.93);overflow:auto}
+.mini-card[hidden]{display:none}
+.mini-start p,.mini-card p{margin:8px 0;color:var(--muted);font-size:14px}
+.mini-card h3{margin:10px 0 6px;font-size:22px;outline:none}
+.mini-card .mini-big{color:var(--ink);font-weight:800;font-size:16px}
+.mini-start .btn,.mini-card .btn{border:0;cursor:pointer;font:inherit;font-weight:800;margin-top:6px}
+.mini-card .ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.mini-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.star{font-size:34px;color:rgba(255,214,107,.22);margin:0 3px}.star.on{color:#ffd66b;text-shadow:0 0 14px rgba(255,190,60,.6)}
+.mini-locked{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.mini-locked .lock{position:relative;width:56px;height:56px;border-radius:14px;overflow:hidden;background:var(--card)}
+.mini-locked img{width:100%;height:100%;filter:grayscale(.65) brightness(.6)}
+.mini-locked .lock::after{content:"";position:absolute;right:4px;bottom:4px;width:16px;height:16px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8f4fc' stroke-width='2.4'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E")}
+.mini-toast{position:absolute;left:50%;top:14px;transform:translateX(-50%);padding:8px 14px;border-radius:99px;background:rgba(5,18,31,.9);border:1px solid var(--line);font-weight:700;font-size:13px;white-space:nowrap;pointer-events:none}
+.mini-toast.show{animation:mini-toast 1.9s ease forwards}
+@keyframes mini-toast{0%{opacity:0;transform:translate(-50%,-6px)}10%,80%{opacity:1;transform:translate(-50%,0)}100%{opacity:0}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.mini button:focus-visible,.mini a:focus-visible{outline:3px solid #ffd66b;outline-offset:2px}
+@media(max-width:900px){.play{grid-template-columns:1fr;gap:28px}.mini{max-width:560px;width:100%;margin:0 auto}}
+@media(max-width:480px){.mini-start{position:static;padding:14px 12px;border:0;border-radius:0;border-top:1px solid var(--line);background:rgba(5,18,31,.94)}.mini-start p{font-size:13px;margin:6px 0}.mini-start .eyebrow{font-size:11px}.mini-start .mini-keys{display:none}.mini-hud{grid-template-columns:repeat(3,auto);row-gap:8px}.mini-water{grid-column:1/-1}.mini-under{flex-direction:column;align-items:stretch}}
+@media(prefers-reduced-motion:reduce){.mini-toast.show{animation:none}.mini-gaugebar span{transition:none}}
+.mini-card .eyebrow{align-self:center}
