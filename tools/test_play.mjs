@@ -27,6 +27,12 @@ async function open(reduce) {
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
   page.on('requestfailed', (r) => errors.push('request failed: ' + r.url()));
   await page.setViewport(view);
+  // Count what Web Audio actually plays: a file that downloads but never starts is silence.
+  await page.evaluateOnNewDocument(() => {
+    window.__heard = [];
+    const start = AudioBufferSourceNode.prototype.start;
+    AudioBufferSourceNode.prototype.start = function (...a) { if (this.buffer && this.buffer.length > 1) window.__heard.push(this.buffer.duration); return start.apply(this, a); };
+  });
   if (reduce) await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
   await page.goto(url.toString(), { waitUntil: 'networkidle0' });
   await page.evaluate(() => document.getElementById('mini').scrollIntoView({ block: 'center', behavior: 'instant' }));
@@ -100,7 +106,8 @@ check((await get(page)).stage === 2, 'board 3 is the last');
 await page.screenshot({ path: `${out}/5-board3.png` });
 await page.evaluate(() => window.__mini.win());
 await page.waitForFunction(() => window.__mini.get().state === 'done', { timeout: 15000 });
-await sleep(200);
+// The emblems arrive over the network on a live site; give them 5 s, then judge.
+await page.waitForFunction(() => [...document.querySelectorAll('.mini-locked img')].every((i) => i.complete), { timeout: 5000 }).catch(() => {});
 const card = await page.evaluate(() => ({
   text: document.querySelector('.mini-card').innerText,
   href: (document.querySelector('.mini-card a[data-ct]') || {}).href || '',
@@ -114,6 +121,9 @@ check(card.imgs.length === 4 && card.imgs.every(Boolean), 'the four locked emble
 await page.screenshot({ path: `${out}/6-ask.png` });
 const sounds = await page.evaluate(() => performance.getEntriesByType('resource').filter((e) => e.name.includes('/audio/')).length);
 check(sounds >= 10, `the game's sounds load after Play (${sounds})`);
+const heard = await page.evaluate(() => window.__heard);
+check(heard.some((d) => d > 30), 'the music plays after Play');
+check(heard.filter((d) => d < 0.2).length >= 3, `turning pipes plays the game's cues (${heard.length} sounds started)`);
 
 const still = await open(true);
 const s0 = await get(still);
