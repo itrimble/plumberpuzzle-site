@@ -198,7 +198,7 @@
     track('mini_ask_shown', { score: total });
     try { localStorage.setItem('pp-mini-done', '1'); } catch (e) { /* storage off */ }
     var emblems = ['RapidFlow', 'PerfectSeal', 'DailyDive', 'EndlessDescent'].map(function (n) {
-      return '<span class="lock"><img src="' + BASE + 'props/EmblemChallenge' + n + '.webp" alt="" width="56" height="56" loading="lazy"></span>';
+      return '<span class="lock"><img src="' + BASE + 'props/EmblemChallenge' + n + '.webp" alt="" width="56" height="56"></span>';
     }).join('');
     card('<p class="eyebrow">Demo complete</p><h3 tabindex="-1">All three boards sealed.</h3>' +
       '<p class="mini-big">' + LEVELS.length + ' boards cleared &middot; ' + total.toLocaleString() + ' points</p>' +

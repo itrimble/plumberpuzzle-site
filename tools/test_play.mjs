@@ -100,7 +100,8 @@ check((await get(page)).stage === 2, 'board 3 is the last');
 await page.screenshot({ path: `${out}/5-board3.png` });
 await page.evaluate(() => window.__mini.win());
 await page.waitForFunction(() => window.__mini.get().state === 'done', { timeout: 15000 });
-await sleep(200);
+// The emblems arrive over the network on a live site; give them 5 s, then judge.
+await page.waitForFunction(() => [...document.querySelectorAll('.mini-locked img')].every((i) => i.complete), { timeout: 5000 }).catch(() => {});
 const card = await page.evaluate(() => ({
   text: document.querySelector('.mini-card').innerText,
   href: (document.querySelector('.mini-card a[data-ct]') || {}).href || '',
