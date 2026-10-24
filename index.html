@@ -40,11 +40,13 @@ a.inline{color:var(--accent2);text-decoration:underline;text-underline-offset:3p
 .shots{list-style:none;margin:28px 0 0;padding:4px 0 18px;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(200px,230px);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.shot{scroll-snap-align:start}.shot img{display:block;width:100%;height:auto;border-radius:28px;border:1px solid var(--line);box-shadow:var(--shadow);background:var(--card)}
 @media(max-width:600px){.shots{grid-auto-columns:72%}}
 </style>
+<link rel="stylesheet" href="/play/play.css">
 </head>
 <body>
 <nav class="nav"><div class="navin">
   <a class="brand" href="/"><span class="mark">PP</span>Plumber Puzzle</a>
   <div class="links">
+    <a href="/#play">Play the demo</a>
     <a href="/#features">Features</a>
     <a href="/support.html">Support</a>
     <a href="/privacy.html">Privacy</a>
@@ -57,7 +59,7 @@ a.inline{color:var(--accent2);text-decoration:underline;text-underline-offset:3p
   <p class="lead">Guide the flow. Fill the sea. Plumber Puzzle: Pipe Flow is a handcrafted iOS puzzle — rotate brass pipes, manage pressure and leaks, chase three-star scores across 140 levels. No ads. No account. One-time purchase.</p>
   <div class="cta">
     <a class="btn primary" href="https://apps.apple.com/us/app/plumber-puzzle-pipe-flow/id6789703995?mt=8&amp;ct=EXP-20261004-PIPEFLOW-SITE-01">Download on the App Store</a>
-    <a class="btn secondary" href="/#features">See features</a>
+    <a class="btn secondary" href="/#play">Play the free demo</a>
   </div>
   <p class="meta">Seller: Ian Trimble · $2.99 one-time · iOS 16+ · Data Not Collected</p>
   <div class="proof">
@@ -67,6 +69,51 @@ a.inline{color:var(--accent2);text-decoration:underline;text-underline-offset:3p
     <div class="proofItem"><strong>★★★</strong><span>three-star scoring</span></div>
   </div>
 </div></header>
+<section class="section" id="play" aria-labelledby="play-h"><div class="wrap play">
+  <div class="play-copy">
+    <span class="eyebrow">Free demo &middot; 3 boards</span>
+    <h2 id="play-h">Play it right here.</h2>
+    <p class="lead">Three real boards from the game, with its own brass pipes, water and sound. No download, nothing to sign up for.</p>
+    <ol class="steps">
+      <li><h3>Turn the pipes</h3><p>Tap a pipe to rotate it. Join the valve to the drain, and leave no pipe out of the network.</p></li>
+      <li><h3>Beat the pressure</h3><p>When the gauge runs out, the water comes. If it finds an open pipe, that is a leak. Run out of leaks and the board resets.</p></li>
+      <li><h3>Surge early</h3><p>Sealed with time to spare? Release the water yourself to bank a score multiplier of up to 2.5&times;.</p></li>
+    </ol>
+    <p class="play-note">A web version of the core puzzle, built from the game&rsquo;s own rules, art and CC0 sound. Boards 1 and 2 come from the redesigned first chapter in the next update. The iPhone game adds 137 more levels, four challenge modes, trophies, haptics and Game Center.</p>
+  </div>
+  <div class="mini" id="mini" data-base="/play/">
+    <div class="mini-top">
+      <p class="mini-stagename" data-mini="stage">Plumber Puzzle demo</p>
+      <div class="mini-tools">
+        <button class="mini-tool" type="button" data-act="pause" aria-label="Pause (Escape)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+        <button class="mini-tool" type="button" data-act="sound" aria-pressed="true" aria-label="Sound on (M to mute)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="off" d="M16 9.5l5 5M21 9.5l-5 5"/></svg></button>
+      </div>
+    </div>
+    <div class="mini-hud" aria-hidden="true">
+      <div><span class="cap">Moves / par</span><b data-mini="moves">0 / 0</b></div>
+      <div><span class="cap">Leaks</span><span class="mini-pips" data-mini="leaks"></span></div>
+      <div><span class="cap">Score</span><b data-mini="score">0</b></div>
+      <div class="mini-water"><span class="cap" data-mini="water">Water</span><div class="mini-gaugebar"><span data-mini="gauge"></span></div></div>
+    </div>
+    <div class="mini-stage">
+      <canvas tabindex="0" width="520" height="520" aria-label="Plumber Puzzle demo board. Tap or click a pipe to turn it. Keyboard: arrow keys move, Space turns the pipe, E releases the water early, Escape pauses, M mutes."></canvas>
+      <p class="mini-toast" hidden></p>
+      <div class="mini-start">
+        <span class="eyebrow">Free demo &middot; 3 boards</span>
+        <p><button class="btn primary" type="button" data-act="start">Play it here</button></p>
+        <p>Tap or click a pipe to turn it.<span class="mini-keys"> Keyboard: arrows, then Space.</span> Sound starts when you press Play; M mutes.</p>
+        <p data-mini="best"></p>
+      </div>
+    </div>
+    <div class="mini-under">
+      <p class="mini-hint" data-mini="hint"></p>
+      <button class="mini-release" type="button" data-act="release">Release water</button>
+    </div>
+    <div class="mini-card" role="dialog" aria-label="Plumber Puzzle demo" hidden></div>
+    <p class="sr-only" data-mini="live" aria-live="polite"></p>
+    <noscript><p class="play-note">The playable board needs JavaScript. The screenshots below are from the game.</p></noscript>
+  </div>
+</div></section>
 <section class="section" id="screenshots"><div class="wrap">
   <h2>Screenshots</h2>
   <ul class="shots"><li class="shot"><img src="/screenshots/01-home.webp" width="460" height="999" loading="lazy" decoding="async" alt="Home screen with the Plumber Puzzle logo and Continue, Levels, Challenges and Trophies buttons"></li><li class="shot"><img src="/screenshots/03-level-48-solving.webp" width="460" height="999" loading="lazy" decoding="async" alt="Level 48 'Black Smoker' mid-solve with the flow meter at 85%"></li><li class="shot"><img src="/screenshots/05-level-30-win.webp" width="460" height="999" loading="lazy" decoding="async" alt="Level 30 'Blackwater Run' sealed at 100% flow"></li><li class="shot"><img src="/screenshots/04-level-110-later.webp" width="460" height="999" loading="lazy" decoding="async" alt="Level 110 'Delta Manifold', a tall late-game pipe board"></li><li class="shot"><img src="/screenshots/06-descent.webp" width="460" height="999" loading="lazy" decoding="async" alt="Endless Descent stage 1 with the green pipe set"></li><li class="shot"><img src="/screenshots/07-trophies.webp" width="460" height="999" loading="lazy" decoding="async" alt="Trophies screen showing 3/48 Legendary trophies"></li><li class="shot"><img src="/screenshots/02-level-12.webp" width="460" height="999" loading="lazy" decoding="async" alt="Level 12 'Backwash' at the start of the puzzle"></li></ul>
@@ -98,6 +145,11 @@ a.inline{color:var(--accent2);text-decoration:underline;text-underline-offset:3p
   <div>© 2026 Ian Trimble · Hosted on Remnant portfolio</div>
   <div><a href="https://apps.apple.com/us/app/plumber-puzzle-pipe-flow/id6789703995?mt=8&amp;ct=EXP-20261004-PIPEFLOW-SITE-01">App Store</a> · <a href="/privacy.html">Privacy</a> · <a href="/support.html">Support</a> · <a href="mailto:iantrimble@remnantsecurity.com">iantrimble@remnantsecurity.com</a></div>
 </div></footer>
+<script src="/play/rules.js" defer></script>
+<script src="/play/levels.js" defer></script>
+<script src="/play/draw.js" defer></script>
+<script src="/play/sound.js" defer></script>
+<script src="/play/play.js" defer></script>
 <script src="/ct.js" data-fallback-ct="EXP-20261004-PIPEFLOW-SITE-01"></script>
 <script src="/posthog.js"></script>
 </body></html>
