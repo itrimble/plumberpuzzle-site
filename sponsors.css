@@ -1,0 +1,26 @@
+/* Sponsors section + minimal footer (Handy-style). All classes prefixed sp- to avoid clashes. */
+.sp{--sp-link:#7AD7FF;--sp-ink:#E8F4FC;--sp-muted:#8BA3B5;--sp-line:rgba(125,180,210,.14);--sp-tile:#0B1C2C;--sp-heart:#f472b6}
+
+.sp-wrap{max-width:1080px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.sp-sponsors{padding:56px 0 40px;border-top:1px solid var(--sp-line);text-align:center;font-family:inherit}
+.sp-sponsors h2{margin:0 0 10px;font-size:28px;line-height:1.2;letter-spacing:-.02em;color:var(--sp-ink)}
+.sp-indie{max-width:560px;margin:0 auto 22px;color:var(--sp-muted);font-size:16px;line-height:1.55}
+.sp-empty{margin:0 0 16px;color:var(--sp-ink);font-size:15px}
+.sp-row{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;margin:0 0 22px;padding:0;list-style:none}
+.sp-sponsors a.sp-tile{display:inline-flex;flex-direction:column;align-items:center;gap:8px;margin:0;padding:6px;text-decoration:none;color:var(--sp-link);font-size:13px;font-weight:600;border-radius:14px}
+.sp-slot{width:64px;height:64px;box-sizing:border-box;border:2px dashed var(--sp-link);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:30px;line-height:1;color:var(--sp-link);background:var(--sp-tile)}
+.sp-tile:hover .sp-slot{border-style:solid}
+.sp-cta{margin:0 auto;max-width:600px;color:var(--sp-muted);font-size:15px;line-height:1.55}
+.sp a{color:var(--sp-link);font-weight:600;margin:0;padding:0;display:inline}
+.sp a:focus-visible{outline:3px solid var(--sp-link);outline-offset:3px;border-radius:6px}
+footer.sp-foot{padding:22px 0 30px;margin:0;color:var(--sp-muted);font-size:13px;border-top:1px solid var(--sp-line);text-align:center}
+.sp-foot nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;font-size:14px;margin:0}
+.sp-made{margin:8px 0 14px;font-size:14px}
+.sp-made a{text-decoration:none}
+.sp-heart{color:var(--sp-heart)}
+.sp-legal{font-size:12px;margin:0;line-height:1.7;color:var(--sp-muted)}
+.sp-nw{white-space:nowrap}
+.sp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[data-show-when="live"]{display:none}
+[data-sponsors-live="true"] [data-show-when="live"]{display:inline}
+[data-sponsors-live="true"] [data-show-when="pending"]{display:none}
