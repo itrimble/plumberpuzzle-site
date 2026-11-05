@@ -41,6 +41,7 @@ a.inline{color:var(--accent2);text-decoration:underline;text-underline-offset:3p
 @media(max-width:600px){.shots{grid-auto-columns:72%}}
 </style>
 <link rel="stylesheet" href="/play/play.css">
+<link rel="stylesheet" href="/sponsors.css">
 </head>
 <body>
 <nav class="nav"><div class="navin">
@@ -141,10 +142,20 @@ a.inline{color:var(--accent2);text-decoration:underline;text-underline-offset:3p
     <a class="btn secondary" href="/support.html">Support</a>
   </div>
 </div></section>
-<footer class="footer"><div class="wrap footerin">
-  <div>© 2026 Ian Trimble · Hosted on Remnant portfolio</div>
-  <div><a href="https://apps.apple.com/us/app/plumber-puzzle-pipe-flow/id6789703995?mt=8&amp;ct=EXP-20261004-PIPEFLOW-SITE-01">App Store</a> · <a href="/privacy.html">Privacy</a> · <a href="/support.html">Support</a> · <a href="mailto:iantrimble@remnantsecurity.com">iantrimble@remnantsecurity.com</a></div>
+<!-- TODO(sponsors): flip data-sponsors-live to "true" when https://github.com/sponsors/itrimble is live -->
+<section class="sp sp-sponsors" data-sponsors-live="false" aria-labelledby="sp-h"><div class="sp-wrap">
+  <h2 id="sp-h">Sponsors</h2>
+  <p class="sp-indie">Plumber Puzzle is made by one person at Remnant Security: no ads, no venture money. Sponsors and buyers keep it independent.</p>
+  <p class="sp-empty">No sponsors yet. <strong>Become our first sponsor.</strong></p>
+  <ul class="sp-row"><li><a class="sp-tile" href="mailto:iantrimble@remnantsecurity.com?subject=Plumber%20Puzzle%20sponsorship" data-live-href="https://github.com/sponsors/itrimble" aria-label="Your logo here: become the first sponsor of Plumber Puzzle"><span class="sp-slot" aria-hidden="true">+</span><span>Your logo here</span></a></li></ul>
+  <p class="sp-cta">Want to sponsor Plumber Puzzle? <span data-show-when="live">Use <a href="mailto:iantrimble@remnantsecurity.com?subject=Plumber%20Puzzle%20sponsorship" data-live-href="https://github.com/sponsors/itrimble">GitHub Sponsors</a> or reach</span><span data-show-when="pending">Reach</span> out directly to <a href="mailto:iantrimble@remnantsecurity.com?subject=Plumber%20Puzzle%20sponsorship">iantrimble@remnantsecurity.com</a>.</p>
+</div></section>
+<footer class="sp sp-foot"><div class="sp-wrap">
+  <nav aria-label="Footer"><a href="/privacy.html">privacy</a><span aria-hidden="true">·</span><a href="https://github.com/itrimble/plumberpuzzle-site" rel="noopener">github</a><span aria-hidden="true">·</span><a href="mailto:iantrimble@remnantsecurity.com">contact</a></nav>
+  <p class="sp-made"><a href="https://remnantsecurity.com">made with <span class="sp-heart" aria-hidden="true">♥</span><span class="sp-sr">love</span></a></p>
+  <p class="sp-legal"><span class="sp-nw">© 2026 Ian Trimble · Hosted on Remnant portfolio</span> · <span class="sp-nw"><a href="https://apps.apple.com/us/app/plumber-puzzle-pipe-flow/id6789703995?mt=8&amp;ct=EXP-20261004-PIPEFLOW-SITE-01">App Store</a></span> · <span class="sp-nw"><a href="/support.html">Support</a></span></p>
 </div></footer>
+<script src="/sponsors.js"></script>
 <script src="/play/rules.js" defer></script>
 <script src="/play/levels.js" defer></script>
 <script src="/play/draw.js" defer></script>
